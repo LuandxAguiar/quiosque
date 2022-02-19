@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.3.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+
+		<!-- Informa o pacote de base, dizendo onde os controller vão estar !!1 -->
+	<context:component-scan 
+		base-package="br.senai.sp.quiosquel"/>
+		<!-- habilita o MVC por meio de Annotation -->
+		<mvc:annotation-driven />
+		
+		<!-- ele pega o prefixo e concatena com o sufixo, ai so precisa colocar o nome do arquivo no retorno, la no Controller!!!  -->
+		<bean  
+				class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
+				<property name="prefix" value="/WEB-INF/view/"></property>
+				<property name="suffix" value=".jsp"></property>
+		</bean>
+		<!-- Libera recursos estaticos, html, css -->
+		<mvc:default-servlet-handler/>
+</beans>
